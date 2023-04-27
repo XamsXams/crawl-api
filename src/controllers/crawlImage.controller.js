@@ -19,7 +19,7 @@ const get = catchAsync(async (req, res) => {
     // }
 
     // const { data: html } = await axios.get(url, { timeout: 10000 });
-    const response = await fetch(url);
+    const response = await fetch(url, { redirect: "follow" });
     const html = await response.text();
     const $ = cheerio.load(html);
 
