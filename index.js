@@ -5,5 +5,5 @@ const logger = require("./src/config/logger");
 let server;
 
 server = app.listen(config.port, () => {
-    logger.info(`Server listening to port ${config.port}`);
+    logger.info(`Server listening on port ${config.port}`);
 });
