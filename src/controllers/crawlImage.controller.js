@@ -28,7 +28,6 @@ const get = catchAsync(async (req, res) => {
         );
         response2 = await fetch(locationURL, { redirect: "manual" });
         console.dir(response2);
-        response2 = await response2.text();
     }
 
     const html = await response.text();
