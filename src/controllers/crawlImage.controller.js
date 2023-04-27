@@ -16,7 +16,7 @@ const get = catchAsync(async (req, res) => {
         }
     }
 
-    const { data: html } = await httpRequest.get(url);
+    const { data: html } = await axios.get(url, { timeout: 10000 });
     const $ = cheerio.load(html);
 
     const info = {
