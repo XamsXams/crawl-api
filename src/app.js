@@ -18,7 +18,15 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(compression());
-app.use(cors());
+app.use(
+    cors({
+        origin: [
+            "https://xams.vercel.app",
+            "https://xamsxams.vercel.app",
+            "http://localhost:5000",
+        ],
+    })
+);
 app.use("/v1", routes);
 app.use(errorHandlerCall);
 app.use(errorHandler);
