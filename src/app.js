@@ -19,13 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 app.use(
-    cors({
-        origin: [
-            "https://xams.vercel.app/",
-            "https://xamsxams.vercel.app/",
-            "http://localhost:5000",
-        ],
-    })
+    cors({ origin: ["http://localhost:3000", "https://xamsxams.vercel.app"] })
 );
 app.use("/v1", routes);
 app.use(errorHandlerCall);

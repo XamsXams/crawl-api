@@ -2,14 +2,14 @@ const httpStatus = require("http-status");
 const catchAsync = require("../utils/catchAsync");
 const cheerio = require("cheerio");
 const axios = require("axios");
-
+const { httpRequest } = require("../utils/httpRequest");
 const get = catchAsync(async (req, res) => {
     const url = req.body.url;
     const website = req.body.website;
     const excepts = JSON.parse(req.body.excepts);
     console.log(`file: crawlImage.controller.js:10 > excepts:`, excepts);
 
-    const { data: html } = await axios.get(url);
+    const { data: html } = await httpRequest.get(url);
     const $ = cheerio.load(html);
 
     const info = {
