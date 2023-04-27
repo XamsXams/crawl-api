@@ -1,6 +1,6 @@
-const app = require("./src/app");
-const config = require("./src/config/config");
-const logger = require("./src/config/logger");
+import app from "./src/app.js";
+import config from "./src/config/config.js";
+import logger from "./src/config/logger.js";
 
 let server;
 

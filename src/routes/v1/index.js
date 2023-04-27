@@ -1,9 +1,11 @@
-const router = require("express").Router();
+import express from "express";
 
-const config = require("../../config/config");
-const homeRoute = require("./home.route");
-const devRoute = require("./dev.route");
-const crawlImageRoute = require("./crawlImage.route");
+import config from "../../config/config.js";
+import homeRoute from "./home.route.js";
+import devRoute from "./dev.route.js";
+import crawlImageRoute from "./crawlImage.route.js";
+const router = express.Router();
+
 const defaultRoutes = [
     {
         path: "/",
@@ -31,4 +33,4 @@ if (config.env === "development") {
     });
 }
 
-module.exports = router;
+export default router;

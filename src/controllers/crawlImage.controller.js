@@ -1,22 +1,26 @@
-const httpStatus = require("http-status");
-const catchAsync = require("../utils/catchAsync");
-const cheerio = require("cheerio");
-const axios = require("axios");
-const { httpRequest } = require("../utils/httpRequest");
+import httpStatus from "http-status";
+import catchAsync from "../utils/catchAsync.js";
+import cheerio from "cheerio";
+import axios from "axios";
+import fetch from "node-fetch";
+import { httpRequest } from "../utils/httpRequest.js";
 
 const get = catchAsync(async (req, res) => {
     const url = req.body.url;
     const website = req.body.website;
-    let excepts;
-    if (req.body?.excepts) {
-        if (typeof req.body?.excepts === "string") {
-            excepts = JSON.parse(req.body?.excepts);
-        } else {
-            excepts = req.body?.excepts;
-        }
-    }
+    const excepts = JSON.parse(req.body.excepts);
+    // let excepts;
+    // if (req.body?.excepts) {
+    //     if (typeof req.body?.excepts === "string") {
+    //         excepts = JSON.parse(req.body?.excepts);
+    //     } else {
+    //         excepts = req.body?.excepts;
+    //     }
+    // }
 
-    const { data: html } = await axios.get(url, { timeout: 10000 });
+    // const { data: html } = await axios.get(url, { timeout: 10000 });
+    const response = await fetch(url);
+    const html = await response.text();
     const $ = cheerio.load(html);
 
     const info = {
@@ -70,4 +74,4 @@ const get = catchAsync(async (req, res) => {
     });
 });
 
-module.exports = { get };
+export { get };

@@ -1,8 +1,8 @@
-const httpStatus = require("http-status");
-const catchAsync = require("../utils/catchAsync");
+import httpStatus from "http-status";
+import catchAsync from "../utils/catchAsync.js";
 
 const index = catchAsync(async (req, res) => {
     res.status(httpStatus.OK).json("Hello");
 });
 
-module.exports = { index };
+export { index };

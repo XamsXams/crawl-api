@@ -1,6 +1,6 @@
-const config = require("../config/config");
-const httpStatus = require("http-status");
-const logger = require("../config/logger");
+import config from "../config/config.js";
+import httpStatus from "http-status";
+import logger from "../config/logger.js";
 
 const errorHandlerCall = (req, res, next) => {
     const error = new Error("Not found");
@@ -8,7 +8,7 @@ const errorHandlerCall = (req, res, next) => {
     next(error);
 };
 
-const errorHandler = (error, req, res, next) => {
+const errorHandlerMiddleware = (error, req, res, next) => {
     res.status(error.status || 500).send({
         error: {
             status: error.status || 500,
@@ -17,4 +17,4 @@ const errorHandler = (error, req, res, next) => {
     });
 };
 
-module.exports = { errorHandler, errorHandlerCall };
+export { errorHandlerMiddleware, errorHandlerCall };

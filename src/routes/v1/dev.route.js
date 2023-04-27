@@ -1,5 +1,7 @@
-const router = require("express").Router();
-const devController = require("../../controllers/dev.controller");
+import express from "express";
+const router = express.Router();
+
+import * as devController from "../../controllers/dev.controller.js";
 router.get("/", devController.index);
 
-module.exports = router;
+export default router;

@@ -1,5 +1,7 @@
-const router = require("express").Router();
-const crawlImageController = require("../../controllers/crawlImage.controller");
+import express from "express";
+const router = express.Router();
+
+import * as crawlImageController from "../../controllers/crawlImage.controller.js";
 router.post("/", crawlImageController.get);
 
-module.exports = router;
+export default router;

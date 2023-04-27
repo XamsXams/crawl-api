@@ -1,17 +1,20 @@
-const express = require("express");
-const helmet = require("helmet");
-const compression = require("compression");
-const cors = require("cors");
-const config = require("./config/config");
-const morgan = require("./config/morgan");
-const { errorHandler, errorHandlerCall } = require("./middlewares/error");
-const routes = require("./routes/v1");
+import express from "express";
+import helmet from "helmet";
+import compression from "compression";
+import cors from "cors";
+import config from "./config/config.js";
+import { errorHandler, successHandler } from "./config/morgan.js";
+import {
+    errorHandlerMiddleware,
+    errorHandlerCall,
+} from "./middlewares/error.js";
+import routes from "./routes/v1/index.js";
 
 const app = express();
 
 if (config.env !== "test") {
-    app.use(morgan.successHandler);
-    app.use(morgan.errorHandler);
+    app.use(successHandler);
+    app.use(errorHandler);
 }
 
 app.use(helmet());
@@ -23,8 +26,8 @@ app.use(
 );
 app.use("/v1", routes);
 app.use(errorHandlerCall);
-app.use(errorHandler);
+app.use(errorHandlerMiddleware);
 
 app.get("/", (req, res) => res.send("Hello Xams"));
 
-module.exports = app;
+export default app;

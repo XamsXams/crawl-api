@@ -1,8 +1,8 @@
-const dotenv = require("dotenv").config();
-
+import dotenv from "dotenv";
+dotenv.config();
 const config = {
     env: process.env.NODE_ENV,
     port: process.env.PORT,
 };
 
-module.exports = config;
+export default config;
