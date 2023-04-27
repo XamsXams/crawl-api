@@ -21,8 +21,8 @@ app.use(compression());
 app.use(
     cors({
         origin: [
-            "https://xams.vercel.app",
-            "https://xamsxams.vercel.app",
+            "https://xams.vercel.app/",
+            "https://xamsxams.vercel.app/",
             "http://localhost:5000",
         ],
     })
