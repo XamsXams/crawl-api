@@ -16,12 +16,6 @@ const get = catchAsync(async (req, res) => {
         }
     }
 
-    console.log(
-        `file: crawlImage.controller.js:10 > excepts:`,
-        excepts,
-        typeof excepts
-    );
-
     const { data: html } = await httpRequest.get(url);
     const $ = cheerio.load(html);
 
@@ -69,7 +63,11 @@ const get = catchAsync(async (req, res) => {
         });
     }
 
-    res.status(httpStatus.OK).json({ img: url_filter_except, info });
+    res.status(httpStatus.OK).json({
+        img: url_filter_except,
+        info,
+        html: JSON.stringify(html),
+    });
 });
 
 module.exports = { get };
