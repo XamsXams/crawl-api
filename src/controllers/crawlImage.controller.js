@@ -20,7 +20,7 @@ const get = catchAsync(async (req, res) => {
 
     // const { data: html } = await axios.get(url, { timeout: 10000 });
     const response = await fetch(url, { redirect: "manual" });
-    let response2;
+    let response2 = "temp";
     if (response.status === 301 || response.status === 302) {
         const locationURL = new URL(
             response.headers.get("location"),
@@ -28,8 +28,8 @@ const get = catchAsync(async (req, res) => {
         );
         response2 = await fetch(locationURL, { redirect: "manual" });
         console.dir(response2);
+        response2 = await response2.text();
     }
-    const temp = await response2.text();
 
     const html = await response.text();
     const $ = cheerio.load(html);
@@ -82,7 +82,7 @@ const get = catchAsync(async (req, res) => {
         img: url_filter_except,
         info,
         html: JSON.stringify(html),
-        temp: JSON.stringify(temp),
+        temp: JSON.stringify(response2),
     });
 });
 
