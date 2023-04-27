@@ -23,4 +23,6 @@ app.use("/v1", routes);
 app.use(errorHandlerCall);
 app.use(errorHandler);
 
+app.get("/", (req, res) => res.send("Hello xams"));
+
 module.exports = app;

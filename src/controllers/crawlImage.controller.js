@@ -51,16 +51,6 @@ const get = catchAsync(async (req, res) => {
         return acc;
     }, []);
 
-    // const url_filter_except = url_filter.reduce((acc, curr) => {
-    //     excepts.forEach((element) => {
-    //         if (curr.includes(element)) {
-    //             return acc;
-    //         } else {
-    //             return [...acc, curr];
-    //         }
-    //     });
-    // });
-
     let url_filter_except = url_filter;
 
     excepts.forEach((element) => {
