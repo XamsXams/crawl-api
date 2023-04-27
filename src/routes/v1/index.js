@@ -2,16 +2,22 @@ const router = require("express").Router();
 
 const config = require("../../config/config");
 const homeRoute = require("./home.route");
+const devRoute = require("./dev.route");
+const crawlImageRoute = require("./crawlImage.route");
 const defaultRoutes = [
     {
         path: "/",
         route: homeRoute,
     },
+    {
+        path: "/images",
+        route: crawlImageRoute,
+    },
 ];
 const devRoutes = [
     {
         path: "/dev",
-        route: homeRoute,
+        route: devRoute,
     },
 ];
 
